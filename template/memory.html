@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <title>質問履歴</title>
+    </head>
+    <body>
+        {% include 'nav.html' %}
+        <div id="memory">
+            <div class="title">質問履歴</div>
+            {% for query, answer, date in zip_lists %}
+            <div class="card">
+                <div class="question">
+                    <div class="question-icon">Q</div>
+                    {{ query|safe }}
+                </div>
+                <div class="answer">
+                    {{ answer|safe }}
+                </div>
+                <div class="timestamp">
+                    {{ date|safe }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+        

@@ -1,0 +1,335 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* スクロール位置を上に */
+    height: 100vh;
+    margin-top: 50px;  /* ナビゲーションバーの高さを考慮 */
+}
+
+/* ナビゲーション部分 */
+#nav {
+    width: 100%;
+    background-color: linear-gradient(to right, #c28f42, #fad0c4);
+    color: white;
+    padding: 16px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+/* チャットコンテナ */
+.chat-container {
+    width: 100%;
+    max-width: 800px;
+    height: 80vh; 
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 80px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* チャットヘッダー */
+.chat-header {
+    background-color: #ff9a9e;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #fad0c4;
+}
+
+.new-chat-button {
+    background-color: #fff;
+    color: #ff9a9e;
+    padding: 8px 16px;
+    border: 2px solid #ff9a9e;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.new-chat-button:hover {
+    background-color: #fff0f5;
+    transform: scale(1.1);
+}
+
+/* チャットボックス */
+.chat-box {
+    padding: 16px;
+    flex-grow: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff8e1;
+    background-image: repeating-linear-gradient(45deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+/* メッセージのスタイル */
+.message {
+    display: inline-block;
+    padding: 12px 18px;
+    margin: 10px 0;
+    border-radius: 12px;
+    max-width: 70%;
+    font-size: 15px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.user-message {
+    background-color: #ffdab9;
+    align-self: flex-end;
+    color: #555;
+    border-top-right-radius: 0;
+}
+
+.bot-message {
+    background-color: #add8e6;
+    align-self: flex-start;
+    color: #555;
+    border-top-left-radius: 0;
+}
+
+/* タイムスタンプ */
+.timestamp {
+    font-size: 0.75rem;
+    color: #888;
+    position: absolute;
+    bottom: -15px;
+}
+
+.user-message .timestamp {
+    right: 10px;
+}
+
+.bot-message .timestamp {
+    left: 10px;
+}
+
+/* チャット入力エリア */
+.chat-input {
+    display: flex;
+    border-top: 2px solid #fad0c4;
+    padding: 10px;
+    background: linear-gradient(to right, #ffecd2, #ffdde1);
+}
+
+.query input {
+    width: calc(100% - 90px);
+    padding: 12px;
+    border: 2px solid #ff9a9e;
+    border-radius: 20px;
+    margin-right: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.chat-input button {
+    background: #ff9a9e;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.chat-input button:hover {
+    background-color: #ff7e80;
+    transform: scale(1.1);
+}
+
+/* スクロールバー */
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #ff9a9e;
+    border-radius: 4px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: #ff6f61;
+}
+
+
+
+/* コンテナのスタイル */
+#memory {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* カードスタイル */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 質問部分 */
+.question {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.question-icon {
+    background-color: #ffd180;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* 回答部分 */
+.answer {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    padding-left: 10px;
+    border-left: 3px solid #ffcc80;
+}
+
+/* 日時部分 */
+.timestamp {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+    font-style: italic;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    #memory {
+        gap: 15px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .question {
+        font-size: 14px;
+    }
+
+    .answer {
+        font-size: 12px;
+    }
+
+    .timestamp {
+        font-size: 10px;
+    }
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* ナビゲーションのコンテナ */
+#nav {
+    background-color: #ff9a9e; /* 背景色 */
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 少し影をつけて立体感 */
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* タイトルのスタイル */
+.nav-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* リンク部分のスタイル */
+.nav-links {
+    display: flex;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;  /* リンク間の間隔 */
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease; /* ホバー時の色変更にトランジションを追加 */
+}
+
+.nav-link:hover {
+    color: #ffc107;  /* ホバー時に色を変える */
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .nav-link {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
