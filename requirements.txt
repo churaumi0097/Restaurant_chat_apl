@@ -6,4 +6,5 @@ pandas
 markdown
 gunicorn
 whitenoise
+PYPI
 psycopg2-binary==2.9.5
