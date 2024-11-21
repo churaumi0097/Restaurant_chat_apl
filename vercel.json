@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "manage.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "apl.settings"
+  }
+}

@@ -1,0 +1,9 @@
+django
+python-dotenv
+requests
+django-widget-tweaks
+pandas
+markdown
+gunicorn
+whitenoise
+psycopg2
