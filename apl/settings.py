@@ -32,7 +32,7 @@ BASE_URL = "https://api.dify.ai/v1/chat-messages"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = [f'{os.getenv("ALLOWED_HOST")}.vercel.app', '.now.sh','127.0.0.1']
+ALLOWED_HOSTS = ["*.onrender.com",'127.0.0.1']
 
 
 # Application definition
