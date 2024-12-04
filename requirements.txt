@@ -9,4 +9,3 @@ whitenoise
 psycopg2-binary==2.9.5
 python-decouple
 dj-database-url
-numpy

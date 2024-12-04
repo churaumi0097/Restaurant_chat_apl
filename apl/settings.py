@@ -32,7 +32,7 @@ BASE_URL = "https://api.dify.ai/v1/chat-messages"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ["*.onrender.com",'127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -82,11 +82,17 @@ WSGI_APPLICATION = 'apl.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-default_dburl = os.getenv('DATABASE_URL')
-DATABASES = {
-    'default': config("DATABASE_URL", default=default_dburl, cast=dburl)
-}
 
+DATABASES = {
+   "default":{
+      "ENGINE":"django.db.backends.postgresql_psycopg2",
+      "NAME":os.getenv("NAME"),
+      "USER":os.getenv("USER"),
+      "PASSWORD":os.getenv("PASSWORD"),
+      "HOST":"localhost",
+      "PORT":"5433"
+   }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -124,13 +130,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-SUPERUSER_NAME = os.getenv("SUPERUSER_NAME")
-SUPERUSER_EMAIL = os.getenv("SUPERUSER_EMAIL")
-SUPERUSER_PASSWORD = os.getenv("SUPERUSER_PASSWORD")
